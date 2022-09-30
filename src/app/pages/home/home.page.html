@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ pageTitle | titlecase }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab horizontal="end" vertical="top" slot="fixed" >
+    <ion-fab-button color="success"  size="small" [routerLink]="['/login']" routerLinkActive="router-link-active" >
+      <ion-icon name="log-in-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
