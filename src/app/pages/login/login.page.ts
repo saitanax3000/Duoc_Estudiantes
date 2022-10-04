@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
   login(){
     if(this.validarModelo(this.user)){
       this.presentToast('Bienivenido ' + this.user.email);
-      this.router.navigate(['/']);
+      this.router.navigate(['home']);
     }
     else{
       this.presentToast("Debes ingresar : " + this.field);
