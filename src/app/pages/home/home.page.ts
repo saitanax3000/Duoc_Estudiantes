@@ -11,7 +11,6 @@ export class HomePage implements OnInit {
   
   loading: HTMLIonLoadingElement;
 
-
   constructor(private loadingCtrl: LoadingController) {}
 
   cargarLoading(message: string){
@@ -26,7 +25,6 @@ export class HomePage implements OnInit {
     this.loading = await this.loadingCtrl.create({
       message,
     });
-
     await this.loading.present();
   }
 
