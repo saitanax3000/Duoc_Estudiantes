@@ -6,7 +6,8 @@ import { LoadingController } from '@ionic/angular';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage  {
+  
   pageTitle='home'
   
   loading: HTMLIonLoadingElement;
@@ -25,6 +26,7 @@ export class HomePage implements OnInit {
     this.loading = await this.loadingCtrl.create({
       message,
     });
+
     await this.loading.present();
   }
 
