@@ -29,6 +29,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/coversor/coversor.module').then( m => m.CoversorPageModule)
   },
   {
+    path: 'clima',
+    loadChildren: () => import('./pages/clima/clima.module').then( m => m.ClimaPageModule)
+  },
+  {
     path: 'p404',
     loadChildren: () => import('./pages/p404/p404.module').then( m => m.P404PageModule)
   },
@@ -36,6 +40,7 @@ const routes: Routes = [
     path:'**',
     redirectTo: 'p404'
   }
+
   
 ];
 

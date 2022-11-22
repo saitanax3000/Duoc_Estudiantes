@@ -11,7 +11,6 @@ export class HomePage  {
   pageTitle='home'
   
   loading: HTMLIonLoadingElement;
-
   constructor(private loadingCtrl: LoadingController) {}
 
   cargarLoading(message: string){
@@ -55,5 +54,5 @@ export class HomePage  {
     this.cargarLoading('Gracias por ocupar la App!! <3')
     console.log('ngOnDestroy');
   }
-
+  
 }

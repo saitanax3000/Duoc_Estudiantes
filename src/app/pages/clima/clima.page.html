@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-item lintes="none">
+      <h1>Informacion Actual</h1>
+      <ion-label slot="end">{{todayDate | date: "dd - MMMM - YYYY"}}</ion-label>
+    </ion-item>
+
+
+    <ion-item>
+      <h1>
+        {{(weatherTemp?.temp - 273.15).toFixed(0)}}
+      </h1>
+      <span>°</span>
+
+      <img slot="end" [src]=weatherIcon>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-icon name="location-outline"></ion-icon>
+      <span>{{cityName}}</span>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-item>
+      <span>Temperatura Maxima</span>
+      <span slot="end">{{(weatherTemp?.temp_max - 273.15).toFixed(0)}}°</span>
+    </ion-item>
+    
+
+    <ion-item>
+      <span>Temperatura Minima</span>
+      <span slot="end">{{(weatherTemp?.temp_min - 273.15).toFixed(0)}}°</span>
+    </ion-item>
+
+    <ion-item>
+      <span>Humedad</span>
+      <span slot="end">{{weatherTemp?.humidity}} %</span>
+    </ion-item>
+  </ion-card>
+</ion-content>
