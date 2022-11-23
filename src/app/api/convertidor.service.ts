@@ -11,15 +11,15 @@ export class ConvertidorService {
 
    }
 
-   getTopHeadLines():Observable<any>{
+   getLista():Observable<any>{
     return this.httpClient.get(
       `${environment.url_base}`
     )
    }
 
-   getArticleByCategory(dolar):Observable<any>{
-    return this.httpClient.get(
-      `${environment.url_base}`
-    )
-   }
+   // getArticleByCategory(dolar):Observable<any>{
+    //return this.httpClient.get(
+      //`${environment.url_base}`
+    //)
+   //}
 }

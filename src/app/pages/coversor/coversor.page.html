@@ -9,13 +9,13 @@
 </ion-header>
 
 <ion-content>
-<ion-list>
-  <ion-row >
+<li>
+  <ion-item *ngFor="let dolar of list">
     <ion-col>
       <ion-label>
-        {{dolar?.nombre}}
+        {{dolar?.valor}}
       </ion-label>
     </ion-col>
-  </ion-row>
-</ion-list>
+  </ion-item>
+</li>
 </ion-content>

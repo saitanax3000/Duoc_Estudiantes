@@ -8,16 +8,16 @@ import { ConvertidorService } from '../../api/convertidor.service';
 })
 export class CoversorPage{
   pageTitle = 'conversor'
-selectedCategory="euro"
-topHeadlines = [];
+  selectedCategory=""
+  lista = [];
 
   constructor(private articleService:ConvertidorService) {
-    articleService.getTopHeadLines().subscribe((results) =>{
-      console.log(results.dolar);
-      this.topHeadlines = results.euro
+    articleService.getLista().subscribe((results) =>{
+      console.log(results);
+      this.lista = results.data
     })
-    articleService.getArticleByCategory('euro').subscribe((results) =>{
+    //articleService.getArticleByCategory('euro').subscribe((results) =>{
       //console.log(results);
-    })
+    //})
 }
 }

@@ -1,20 +1,28 @@
-<ion-header [translucent]="true">
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ pageTitle | titlecase }}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-item lintes="none">
       <h1>Informacion Actual</h1>
-      <ion-label slot="end">{{todayDate | date: "dd - MMMM - YYYY"}}</ion-label>
     </ion-item>
 
+    <ion-item>
+      <h6>{{todayDate | date: "dd/MMMM/YYYY"}}</h6>
+    </ion-item>
 
     <ion-item>
       <h1>
         {{(weatherTemp?.temp - 273.15).toFixed(0)}}
       </h1>
       <span>°</span>
-
-      <img slot="end" [src]=weatherIcon>
+      <img slot="" [src]=weatherIcon>
     </ion-item>
 
 
