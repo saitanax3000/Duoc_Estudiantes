@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,47 +11,69 @@ import { ToastController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
+  credentials!: FormGroup;
+
   pageTitle = 'Login';
 
-  user : any = {
-    email:'',
-    password: ''
-  }
 
-  field : string = '';
-
-  constructor(private toastController: ToastController, private router:Router) { }
+  constructor(
+    private router:Router,
+    private formBuilder:FormBuilder,
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private authService: AuthService,
+    ) { }
 
   ngOnInit() {
+    this.credentials = this.formBuilder.group({
+      email: ['',[Validators.required, Validators.email]],
+      password: ['',[Validators.required, Validators.minLength(6)]]
+    });
   }
 
-  login(){
-    if(this.validarModelo(this.user)){
-      this.presentToast('Bienivenido ' + this.user.email);
-      this.router.navigate(['home']);
+  get email(){
+    return this.credentials?.get('email');
+  }
+
+  get password(){
+    return this.credentials?.get('password');
+  }
+
+  async login(){
+    const loading = await this.loadingCtrl.create();
+    await loading.present()
+    const user = await this.authService.login(this.credentials.value.email,this.credentials.value.password);
+    await loading.dismiss();
+
+    if(user){
+      this.router.navigateByUrl('/home',{replaceUrl:true});
     }
     else{
-      this.presentToast("Debes ingresar : " + this.field);
+      this.alertPresent('Login fallido','Datos ingresados incorrectos.');
     }
   }
 
-  validarModelo(model:any){
-    for(var[key,value]  of Object.entries(model)){
-      if(value == ''){
-        this.field = key;
-        return false;
-      }
+  async register(){
+    const loading = await this.loadingCtrl.create();
+    await loading.present()
+    const user = await this.authService.register(this.credentials.value.email,this.credentials.value.password);
+    await loading.dismiss();
+
+    if(user){
+      this.router.navigateByUrl('/home',{replaceUrl:true});
     }
-    return true;
+    else{
+      this.alertPresent('Registro fallido','Datos ingresados incorrectos.');
+    }
   }
 
-  async presentToast(message: string, duration?:number) {
-    const toast = await this.toastController.create({
-      message: message,
-      duration: duration?duration:2000,
-      position: 'bottom'
+  async alertPresent(header:string,mesagge:string){
+    const alert = await this.alertCtrl.create({
+      header:header,
+      message:mesagge,
+      buttons:['OK'],
     });
-    await toast.present();
+    await alert.present();
   }
 
 }

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "ionic1-81ddb"
+  },
+  "targets": {
+    "ionic1-81ddb": {
+      "hosting": {
+        "app": [
+          "ionic1-81ddb"
+        ]
+      }
+    }
+  }
+}
