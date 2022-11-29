@@ -7,15 +7,17 @@ import { environment } from 'src/environments/environment';
 })
 export class ConvertidorService {
 
-  constructor(private httpClient:HttpClient) {
+  constructor() {
 
    }
-
-   getLista():Observable<any>{
-    return this.httpClient.get(
-      `${environment.url_base}`
-    )
-   }
+  getDataEuro<T>() {
+    const url = 'https://mindicador.cl/api/euro/2022';
+    return fetch(url).then(res => res.json());
+  }
+  getDataDolar<T>(){
+    const url = 'https://mindicador.cl/api/dolar/2022';
+    return fetch(url).then(res => res.json());
+  }
 
    // getArticleByCategory(dolar):Observable<any>{
     //return this.httpClient.get(

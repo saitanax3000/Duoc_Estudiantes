@@ -4,18 +4,41 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>{{ pageTitle | titlecase }}</ion-title>
-    <ion-title>{{dolar?.nombre}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-<li>
-  <ion-item *ngFor="let dolar of list">
-    <ion-col>
-      <ion-label>
-        {{dolar?.valor}}
-      </ion-label>
-    </ion-col>
-  </ion-item>
-</li>
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-text class="ion-text-center" color="success">
+      <h1>EUR a CLP</h1>
+    </ion-text>
+
+    <ion-item>
+    <ion-label>Ingrese Monto :</ion-label>
+    <ion-input type="number" placeholder="0" [(ngModel)]="monedaEuro.euro"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button shape="round" (click)="clickConvertEuro()">Convertir
+      <ion-icon slot="end" name="logo-euro"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-text class="ion-text-center" color="success">
+      <h1>USD a CLP</h1>
+    </ion-text>
+
+    <ion-item>
+    <ion-label>Ingrese Monto :</ion-label>
+    <ion-input type="number" placeholder="0" [(ngModel)]="monedaDolar.dolar"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button shape="round" (click)="clickConvertDolar()">Convertir
+      <ion-icon slot="end" name="logo-usd"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
 </ion-content>
