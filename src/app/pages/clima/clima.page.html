@@ -18,21 +18,23 @@
     </ion-item>
 
     <ion-item>
-      <h1>
-        {{(weatherTemp?.temp - 273.15).toFixed(0)}}
-      </h1>
-      <span>°</span>
+      <span>{{temp}}°</span>
       <img slot="" [src]=weatherIcon>
     </ion-item>
 
 
     <ion-item>
       <ion-icon name="location-outline"></ion-icon>
-      <span>{{cityName}}</span>
+      <span>{{city}}</span>
     </ion-item>
   </ion-card>
 
   <ion-card>
+    <ion-item>
+      <span>Temperatura Actual</span>
+      <span slot="end">{{temp}}°</span>
+    </ion-item>
+
     <ion-item>
       <span>Temperatura Maxima</span>
       <span slot="end">{{(weatherTemp?.temp_max - 273.15).toFixed(0)}}°</span>
