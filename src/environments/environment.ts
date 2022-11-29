@@ -6,8 +6,6 @@ export const environment = {
   production: false,
   API_KEY: '6b2493ac87f078a73e69876d034ee4c9',
   API_URL:'https://api.openweathermap.org/data/2.5/',
-  key_api: '',
-  url_base: 'https://mindicador.cl/api/',
   firebase: {
     projectId: 'ionic1-81ddb',
     appId: '1:752175073540:web:37acd665b66f3fd6aa2851',
