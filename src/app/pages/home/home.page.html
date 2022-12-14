@@ -1,22 +1,54 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{ pageTitle | titlecase }}</ion-title>
+<ion-header class="header">
+  <ion-toolbar class="toolbar">
+    <ion-title >RegistrApp</ion-title>
+    <ion-button slot="end" (click)="logout()" color="warning"><ion-icon name="log-in-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed" >
-    <ion-fab-button color="danger"  size="small" [routerLink]="['/login']" routerLinkActive="router-link-active" >
-      <ion-icon name="log-out-outline"></ion-icon>
-    </ion-fab-button>
+  <ion-card class="ion-cardFondo">
+      <img src="../../../assets/img/cat.gif" alt="">
+      <ion-card-header>
+        <ion-card-title>Hola. Bienvenido: {{usuario.nombre}}</ion-card-title>
+        <ion-card-subtitle>DuocUC San Joaquin</ion-card-subtitle>
+      </ion-card-header>
+  </ion-card>  
+  
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="tab">
+      
+      <ion-tab-button tab="administrador" *ngIf="usuario.tipo_usuario == 'administrador'" class="tab">
+        <ion-icon name="attach-outline"></ion-icon>
+        <ion-label>Admin</ion-label>
+        <ion-badge>6</ion-badge>
+      </ion-tab-button>
 
-  </ion-fab>
+      <ion-tab-button tab="asignatura" *ngIf="usuario.tipo_usuario == 'administrador'" class="tab">
+        <ion-icon name="library-outline"></ion-icon>
+        <ion-label>asignatura</ion-label>
+        <ion-badge>1</ion-badge>
+      </ion-tab-button>
+  
 
-  <ion-card>
-    <img src="../../../assets/img/cat.gif" alt="">
-    <ion-card-header>
-      <ion-card-title>Hola. Conoce nuestra app.</ion-card-title>
-      <ion-card-subtitle>DuocUC San Joaquin</ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
+      <ion-tab-button tab="profesor/{{usuario.rut}}" *ngIf="usuario.tipo_usuario == 'profesor'" >
+        <ion-icon name="attach-outline"></ion-icon>
+        <ion-label>asignaturas</ion-label>
+        <ion-badge>1</ion-badge>
+      </ion-tab-button>
+
+
+      <ion-tab-button tab="alumno/{{usuario.rut}}" *ngIf="usuario.tipo_usuario == 'alumno'">
+        <ion-icon name="qr-code-outline"></ion-icon>
+        <ion-label>Escanear Qr</ion-label>
+        <ion-badge>1</ion-badge>
+      </ion-tab-button>
+
+      <ion-tab-button tab="perfil/{{usuario.rut}}" class="tab">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-tab-button>
+  
+    </ion-tab-bar>
+  </ion-tabs>
+
 </ion-content>

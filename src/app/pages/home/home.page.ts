@@ -1,58 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { ValidacionesService } from 'src/app/services/validaciones.service'; 
+import { FirebaseService} from '../../services/firebase.service';
+
+
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
 })
-export class HomePage  {
+export class HomePage implements OnInit{
+
+  //VAMOS A CREAR UNA VARIABLE QUE RECIBA LOS DATOS DEL USUARIO DESDE LOGIN:
+  usuario: any;
+
+  constructor(private router: Router, private FirebaseService:FirebaseService) {}
+
+  ngOnInit(){
+    this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
+  }
+
+
+  logout(){
+    this.FirebaseService.logout();
+  }
+
   
-  pageTitle='home'
-  
-  loading: HTMLIonLoadingElement;
-  constructor(private loadingCtrl: LoadingController) {}
-
-  cargarLoading(message: string){
-    this.presentLoading(message);
-
-    setTimeout(() => {
-      this.loading.dismiss();
-    }, 2000);
-  }
-
-  async presentLoading(message: string){
-    this.loading = await this.loadingCtrl.create({
-      message,
-    });
-
-    await this.loading.present();
-  }
-
-  ngOnInit() {
-    this.cargarLoading('Bienvenido!!! :)');
-    console.log('ngOnInit');
-  }
-
-  ionViewWillEnter(){
-    console.log('ionViewWillEnter');
-  }
-
-  ionViewDidEnter(){
-    console.log('ionViewDidEnter');
-  }
-
-  ionViewWillLeave(){
-    console.log('ionViewWillLeave');
-  }
-
-  ionViewDidLeave(){
-    console.log('ionViewDidLeave');
-  }
-
-  ngOnDestroy(){
-    this.cargarLoading('Gracias por ocupar la App!! <3')
-    console.log('ngOnDestroy');
-  }
   
 }
+
