@@ -33,13 +33,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/clima/clima.module').then( m => m.ClimaPageModule)
   },
   {
-    path: 'p404',
-    loadChildren: () => import('./pages/p404/p404.module').then( m => m.P404PageModule)
-  },
-  {
-    path:'**',
-    redirectTo: 'p404'
-  },  {
     path: 'administrador',
     loadChildren: () => import('./pages/administrador/administrador.module').then( m => m.AdministradorPageModule)
   },
@@ -78,9 +71,15 @@ const routes: Routes = [
   {
     path: 'registro',
     loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'p404',
+    loadChildren: () => import('./pages/p404/p404.module').then( m => m.P404PageModule)
+  },
+  {
+    path:'**',
+    redirectTo: 'p404'
   }
-
-
   
 ];
 

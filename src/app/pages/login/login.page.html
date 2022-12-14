@@ -5,20 +5,24 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="usuario" (ngSubmit)="ingresar()">
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input formControlName="correo" type="text" placeholder="Ingrese correo"></ion-input>
+    </ion-item>
 
- <form [formGroup]="credentials" (ngSubmit)="login()">
-    <ion-item class="ion-margin-bottom">
-      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
-      <ion-note slot="error" *ngIf="(email?.dirty || email?.touched) && email?.errors">Email no válido</ion-note>
+    <ion-item>
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input formControlName="clave" type="password" placeholder="Ingrese clave"></ion-input>
     </ion-item>
-  
-    <ion-item class="ion-margin-bottom">
-      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-      <ion-note slot="error" *ngIf="(password?.dirty || password?.touched) && password?.errors">Password debe tener al menos 6 caracteres</ion-note>
+    <ion-button type="submit" expand="full" [disabled]="!usuario.valid">Ingresar</ion-button>
+    <ion-item>
+      <a routerLink="/registro" >Registrar usuario</a>
     </ion-item>
-  
-    <ion-button expand="full" type="submit" [disabled]="!credentials.valid">Login</ion-button>
-    <ion-button expand="full" type="button" (click)="register()">Crear cuenta</ion-button>
+    <ion-item>
+      <a routerLink="/recuperar" >Recuperar contraseña</a>
+    </ion-item>
+
+
   </form>
-
 </ion-content>
