@@ -6,10 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Home', url: '/home', icon: 'home' },
-    { title: 'Nosotros', url: '/about', icon: 'information' },
-    { title: 'Conversor', url: '/coversor', icon: 'calculator' },
-    { title: 'Clima', url: '/clima', icon:'sunny'}
-  ];
 }

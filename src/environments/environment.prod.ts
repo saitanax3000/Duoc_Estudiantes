@@ -1,12 +1,11 @@
 export const environment = {
   firebase: {
-    projectId: 'ionic1-81ddb',
-    appId: '1:752175073540:web:37acd665b66f3fd6aa2851',
-    storageBucket: 'ionic1-81ddb.appspot.com',
-    locationId: 'us-central',
-    apiKey: 'AIzaSyAk-SSjUpgE8h8520KOKV02m9yxIya1Cco',
-    authDomain: 'ionic1-81ddb.firebaseapp.com',
-    messagingSenderId: '752175073540',
+      apiKey: "AIzaSyCYUhg_hZ5OI5S_4863RuwHeJqzr5S19lg",
+      authDomain: "examen-ionic-6e9de.firebaseapp.com",
+      projectId: "examen-ionic-6e9de",
+      storageBucket: "examen-ionic-6e9de.appspot.com",
+      messagingSenderId: "57390511013",
+      appId: "1:57390511013:web:db8a9c12a553b793a1ee4c"
   },
   production: true
 };
