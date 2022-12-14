@@ -79,9 +79,12 @@ export class ProfesorPage implements OnInit {
   }
   generarQR(){
     if (this.asistencia.ide == '') {
+      
       this.asistencia.ide = this.id
     }}
 
+
+    
 generarClase(){
  this.clases = this.clasess.find(clas => clas.ide == this.asistencia.ide)
 if(this.clases == undefined){
