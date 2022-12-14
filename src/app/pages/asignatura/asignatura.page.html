@@ -1,9 +1,61 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>asignatura</ion-title>
+    <ion-title>{{pageTitle | titlecase}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="fondo">
+    <form [formGroup]="asignatura" (ngSubmit)="agregar()">
 
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>INGRESAR</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item >
+            <ion-label position="stacked">Sigla</ion-label>
+            <ion-input formControlName="sigla" type="text" placeholder="Ingrese correo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input formControlName="nombre" type="text" placeholder="Ingrese clave"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Profesor</ion-label>
+            <ion-input formControlName="profesor" type="text" placeholder="Ingrese clave"></ion-input>
+          </ion-item>
+          <ion-button type="submit" expand="full">Ingresar</ion-button>
+          <ion-button (click)="modificar()" [disabled]="id_modificar == ''" expand="full">Modificar</ion-button>
+
+        </ion-card-content>
+
+      </ion-card>
+        <ion-item>
+        <h1>Lista de asignaturas</h1>
+        </ion-item>
+        <div class="div">
+          <ion-list *ngFor="let u of asignaturas" class="lista">
+            <ion-card class="cardlista">
+                  <ion-item>
+                  <ion-label>ID: {{u.id}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                  <ion-label>sigla: {{u.sigla}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                  <ion-label>NOMBRE: {{u.nombre}}</ion-label>
+                  </ion-item>
+                  <ion-item>
+                  <ion-label>profesor: {{u.profesor}}</ion-label>
+                  </ion-item>
+              <ion-item>
+                <ion-button slot="end" color="warning"(click)="buscar(u.id)">Buscar</ion-button>
+                <ion-button slot="end" color="danger"  (click)="eliminar(u.id)">Eliminar</ion-button>
+              </ion-item>
+            </ion-card>
+          </ion-list>
+        </div>
+    </form>
+  </div>
 </ion-content>

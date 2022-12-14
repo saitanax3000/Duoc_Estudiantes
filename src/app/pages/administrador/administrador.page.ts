@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class AdministradorPage implements OnInit {        
   pageTitle= 'Administrador';
-  
+
   //variable grupo:
   usuario = new FormGroup({
     rut: new FormControl('', [Validators.required, Validators.pattern('[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9kK]')]),
@@ -141,11 +141,4 @@ modificar(){
   this.usuario.reset();
   this.id_modificar = '';
 }
-
-
-
-
-
-
-
 }

@@ -1,9 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>alumno</ion-title>
+    <ion-title>{{pageTitle | titlecase}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card class="cardIngrear">
+    <ion-card-content>
+    <h1 position="stacked">Ingrese Codigo de Clase:</h1>
+      <ion-item>
+        <ion-input class="input" [(ngModel)]="codAlumno" [ngModelOptions]="{standalone: true}" id="scanearQr" type="text"  placeholder="Ingrese Codigo"></ion-input>
+      </ion-item>
+      <ion-button expand="full" color="warning" (click)="modificar()">Ingresar QR</ion-button>
+  </ion-card-content>
+  </ion-card>
 </ion-content>
