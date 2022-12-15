@@ -20,7 +20,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
+  imports: [IonicStorageModule.forRoot(), BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => {
       if(Capacitor.isNativePlatform()){
@@ -34,8 +34,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     }),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    AngularFireModule.initializeApp(environment.firebase),
-    IonicStorageModule.forRoot()
+    AngularFireModule.initializeApp(environment.firebase)
     
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

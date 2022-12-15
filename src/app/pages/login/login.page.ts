@@ -82,6 +82,7 @@ export class LoginPage implements OnInit {
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
+
 }
   
 

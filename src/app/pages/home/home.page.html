@@ -1,6 +1,6 @@
 <ion-header class="header">
   <ion-toolbar class="toolbar">
-    <ion-title >RegistrApp</ion-title>
+    <ion-title >{{ pageTitle | titlecase }}</ion-title>
     <ion-button slot="end" (click)="logout()" color="warning"><ion-icon name="log-in-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
@@ -12,8 +12,7 @@
         <ion-card-title>Hola. Bienvenido: {{usuario.nombre}}</ion-card-title>
         <ion-card-subtitle>DuocUC San Joaquin</ion-card-subtitle>
       </ion-card-header>
-  </ion-card>  
-  
+  </ion-card>
   <ion-tabs>
     <ion-tab-bar slot="bottom" class="tab">
       
@@ -28,14 +27,6 @@
         <ion-label>asignatura</ion-label>
         <ion-badge>1</ion-badge>
       </ion-tab-button>
-  
-
-      <ion-tab-button tab="profesor/{{usuario.rut}}" *ngIf="usuario.tipo_usuario == 'profesor'" >
-        <ion-icon name="attach-outline"></ion-icon>
-        <ion-label>asignaturas</ion-label>
-        <ion-badge>1</ion-badge>
-      </ion-tab-button>
-
 
       <ion-tab-button tab="alumno/{{usuario.rut}}" *ngIf="usuario.tipo_usuario == 'alumno'">
         <ion-icon name="qr-code-outline"></ion-icon>
@@ -46,6 +37,28 @@
       <ion-tab-button tab="perfil/{{usuario.rut}}" class="tab">
         <ion-icon name="person-circle-outline"></ion-icon>
         <ion-label>Perfil</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="profesor/{{usuario.rut}}" *ngIf="usuario.tipo_usuario == 'profesor'" >
+        <ion-icon name="attach-outline"></ion-icon>
+        <ion-label>asignaturas</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="verDesarrolladores()" *ngIf="usuario.tipo_usuario == 'administrador'" class="tab">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        <ion-label>Nosotros</ion-label>
+        <ion-badge>1</ion-badge>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="verConversor()" *ngIf="usuario.tipo_usuario == 'profesor'" class="tab">
+        <ion-icon name="cash-outline"></ion-icon>
+        <ion-label>Conversor</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="verClima()" *ngIf="usuario.tipo_usuario == 'profesor'" class="tab">
+        <ion-icon name="rainy-outline"></ion-icon>
+        <ion-label>Clima</ion-label>
+        <ion-badge>1</ion-badge>
       </ion-tab-button>
   
     </ion-tab-bar>

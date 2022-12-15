@@ -12,7 +12,7 @@ import { FirebaseService} from '../../services/firebase.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
-
+  pageTitle='Bienvenido'
   //VAMOS A CREAR UNA VARIABLE QUE RECIBA LOS DATOS DEL USUARIO DESDE LOGIN:
   usuario: any;
 
@@ -25,6 +25,18 @@ export class HomePage implements OnInit{
 
   logout(){
     this.FirebaseService.logout();
+  }
+
+  verClima(){
+    this.router.navigateByUrl('/clima');
+  }
+
+  verConversor(){
+    this.router.navigateByUrl('/coversor');
+  }
+
+  verDesarrolladores(){
+    this.router.navigateByUrl('/about');
   }
 
   

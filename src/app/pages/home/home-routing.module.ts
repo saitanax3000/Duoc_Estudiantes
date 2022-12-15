@@ -27,8 +27,6 @@ const routes: Routes = [
       path: 'alumno/:rut',
       loadChildren: () => import('../alumno/alumno.module').then( m => m.AlumnoPageModule)
     },
-      
-
     ]
   }
 ];

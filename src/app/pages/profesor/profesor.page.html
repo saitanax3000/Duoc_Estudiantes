@@ -1,17 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ pageTitle | titlecase }}</ion-title>
+    <ion-title >{{ pageTitle | titlecase }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content >
+  <div class="fondo">
   <h1>Lista de asignaturas</h1>
+  <div class="div">
     <ion-list *ngFor="let a of asignaturas" class="lista">
     <ion-card class="cardlista" *ngIf="rut == a.profesor">
+    <ion-accordion-group >
+      <ion-accordion value="second">
         <ion-item slot="header" color="light">
           <ion-label>Sigla de la Asignatura: {{a.sigla}}</ion-label>
         </ion-item>
         <div class="ion-padding" slot="content">
+
           <ion-card-title>ID: {{a.id}}</ion-card-title>
           <ion-card-title>NOMBRE: {{a.nombre}}</ion-card-title>
           <ion-card-title>SIGLA: {{a.sigla}}</ion-card-title>
@@ -20,15 +25,25 @@
         <ion-button slot="end" color="warning" (click)="resetIde()">Terminar Clase</ion-button>
       </ion-item>
         </div>
+      </ion-accordion>
+    </ion-accordion-group>
 <ion-card-title>Estado de la Clase: {{estado}} </ion-card-title>
   </ion-card>
 </ion-list>
+
+  </div>
+
   <!-- CODIGO QR AQUI -->
   <ion-item class="qr">
     <ion-card class="cardlistaa">
       <ngx-qrcode [elementType]= 'elementType' value="{{asistencia.ide}}"></ngx-qrcode>
       <h1>Codigo de la Clase</h1>
-      <ion-input placeholder=""  [(ngModel)]="asistencia.ide"  disabled="true" class="cod"></ion-input >
+      <ion-input color="warning" [(ngModel)]="asistencia.ide" class="cod"></ion-input >
     </ion-card>
+    
+
   </ion-item>
+
+  
+</div>
 </ion-content>
