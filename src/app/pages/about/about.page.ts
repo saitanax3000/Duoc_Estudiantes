@@ -9,17 +9,8 @@ import { NavController } from '@ionic/angular';
 })
 export class AboutPage implements OnInit {
   pageTitle = 'nosotros'
-
-
-  
-
   constructor() { }
 
   ngOnInit() {
   }
-
- 
-  
-  
-
 }

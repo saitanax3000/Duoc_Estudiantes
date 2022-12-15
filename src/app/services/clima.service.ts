@@ -5,12 +5,12 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class ClimaService {
-  constructor() {}
+  constructor() { }
   getCurrentWheater(latitude: number, longitude: number) {
-    const url =  `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${environment.API_KEY}&lang=sp&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${environment.API_KEY}&lang=sp&units=metric`;
     console.log({ url });
     return fetch(
-     url
+      url
     ).then((res) => res.json());
   }
 }

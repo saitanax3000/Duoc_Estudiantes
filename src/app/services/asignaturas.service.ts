@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
-import { AngularFirestore} from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 @Injectable({
@@ -10,17 +10,17 @@ export class AsignaturasService {
 
   asignaturas: any[] = [];
 
-  constructor(private asignaturaStorage: Storage, private fire: AngularFirestore) { 
+  constructor(private asignaturaStorage: Storage, private fire: AngularFirestore) {
     asignaturaStorage.create();
   }
 
   //MÉTODOS DEL CRUD DEL STORAGE:
-  async agregar(key, Asignatura){
+  async agregar(key, Asignatura) {
     this.asignaturas = await this.asignaturaStorage.get(key) || [];
-    
+
     //VAMOS A VER SI EL DATO QUE VIENE COMO PARÁMETRO TIENE id:
     //si tiene id, buscamos si existe, si NO tiene id, agregamos:
-    if(Asignatura.id == ''){
+    if (Asignatura.id == '') {
       var id = this.asignaturas.length + 1;
       Asignatura.id = id;
       this.asignaturas.push(Asignatura);
@@ -29,22 +29,22 @@ export class AsignaturasService {
     }
     return false;
   }
-  
-  async getDato(key, identificador){
+
+  async getDato(key, identificador) {
     this.asignaturas = await this.asignaturaStorage.get(key) || [];
     return this.asignaturas.find(Asignatura => Asignatura.profesor == identificador);
   }
 
-  async getDatos(key){
+  async getDatos(key) {
     this.asignaturas = await this.asignaturaStorage.get(key) || [];
     return this.asignaturas;
   }
 
-  async eliminar(key, identificador){
+  async eliminar(key, identificador) {
     this.asignaturas = await this.asignaturaStorage.get(key) || [];
 
     this.asignaturas.forEach((value, index) => {
-      if(value.id == identificador){
+      if (value.id == identificador) {
         this.asignaturas.splice(index, 1);
       }
     });
@@ -52,7 +52,7 @@ export class AsignaturasService {
     await this.asignaturaStorage.set(key, this.asignaturas);
   }
 
-  async actualizar(key, dato){
+  async actualizar(key, dato) {
     this.asignaturas = await this.asignaturaStorage.get(key) || [];
 
     var index = this.asignaturas.findIndex(value => value.id == dato.id);
@@ -61,7 +61,7 @@ export class AsignaturasService {
     await this.asignaturaStorage.set(key, this.asignaturas);
   }
 
-  agregarAsignatura(coleccion, value){
+  agregarAsignatura(coleccion, value) {
     try {
 
       return this.fire.collection(coleccion).add(value);
@@ -72,7 +72,7 @@ export class AsignaturasService {
 
   }
 
-  buscarAsignatura(coleccion, id){
+  buscarAsignatura(coleccion, id) {
     try {
       return this.fire.collection(coleccion).doc(id).get();
     } catch (error) {
@@ -81,7 +81,7 @@ export class AsignaturasService {
 
   }
 
-  buscarTodo(coleccion){
+  buscarTodo(coleccion) {
     try {
       return this.fire.collection(coleccion).snapshotChanges();
     } catch (error) {
@@ -90,7 +90,7 @@ export class AsignaturasService {
 
   }
 
-  modificar(coleccion, id, value){
+  modificar(coleccion, id, value) {
     try {
       this.fire.collection(coleccion).doc(id).set(value);
     } catch (error) {
@@ -99,7 +99,7 @@ export class AsignaturasService {
 
   }
 
-  eliminarAsignatura(coleccion, id){
+  eliminarAsignatura(coleccion, id) {
     try {
       this.fire.collection(coleccion).doc(id).delete();
     } catch (error) {
@@ -108,8 +108,8 @@ export class AsignaturasService {
 
   }
 
-  
 
 
-  
+
+
 }

@@ -29,71 +29,71 @@ export class RegistroPage implements OnInit {
   repetir_clave: string;
   usuarioEncontrado: any = ''
   usuarioEncontradoCorreo: any = ''
-  usuarios : any [] = [];
+  usuarios: any[] = [];
   constructor(private usuarioService: UsuarioService, private validaciones: ValidacionesService, private router: Router,
-    private FirebaseService : FirebaseService,  private toast: ToastController) { }
+    private FirebaseService: FirebaseService, private toast: ToastController) { }
   ngOnInit() {
     this.cargarDatos()
   }
-cargarDatos(){
-  this.FirebaseService.getUsuarios('usuarios').subscribe(
-    data => {
+  cargarDatos() {
+    this.FirebaseService.getUsuarios('usuarios').subscribe(
+      data => {
 
-      for(let u of data){
-        let usu = u.payload.doc.data();
-        usu['id'] = u.payload.doc.id;
-        this.usuarios.push( usu );
+        for (let u of data) {
+          let usu = u.payload.doc.data();
+          usu['id'] = u.payload.doc.id;
+          this.usuarios.push(usu);
+        }
+        console.log(this.usuarios)
       }
-      console.log(this.usuarios)
+    );
+  }
+
+  registrar() {
+    if (!this.validaciones.validarRut(this.usuario.controls.rut.value)) {
+      alert('Rut incorrecto!');
+      return;
     }
-  );
-}
+    if (!this.validaciones.validarEdadMinima(17, this.usuario.controls.fecha_nac.value)) {
+      alert('Edad mínima 17 años!');
+      return;
+    }
+    if (this.usuario.controls.clave.value != this.repetir_clave) {
+      alert('Contraseñas no coinciden!');
+      return;
+    }
+    this.usuarioEncontrado = this.usuarios.find(usu => usu.rut == this.usuario.value.rut)
+    this.usuarioEncontradoCorreo = this.usuarios.find(usu => usu.correo == this.usuario.value.correo)
 
-registrar(){
-  if (!this.validaciones.validarRut(this.usuario.controls.rut.value)) {
-    alert('Rut incorrecto!');
-    return;
-  }
-  if (!this.validaciones.validarEdadMinima(17, this.usuario.controls.fecha_nac.value)) {
-    alert('Edad mínima 17 años!');
-    return;
-  }
-  if (this.usuario.controls.clave.value != this.repetir_clave) {
-    alert('Contraseñas no coinciden!');
-    return;
-  }
-this.usuarioEncontrado = this.usuarios.find(usu => usu.rut == this.usuario.value.rut)
-this.usuarioEncontradoCorreo = this.usuarios.find(usu => usu.correo == this.usuario.value.correo)
+    if (this.usuarioEncontrado == undefined && this.usuarioEncontradoCorreo == undefined) {
+      this.toastexito('bottom', 'Usuario Registrado con Exito!!');
+      this.FirebaseService.agregar('usuarios', this.usuario.value)
+      this.router.navigate(['/login'])
+      this.usuario.reset();
 
-  if(this.usuarioEncontrado == undefined && this.usuarioEncontradoCorreo == undefined ){
-    this.toastexito('bottom', 'Usuario Registrado con Exito!!'); 
-    this.FirebaseService.agregar('usuarios', this.usuario.value)
-    this.router.navigate(['/login'])
-    this.usuario.reset();
-
-} else {
-  this.toastError('bottom', 'Error! Usuario Ya Existe!');
-  //console.log(this.usuario)
-}
-}
-async toastError(position: 'bottom', message: string) {
-const toast = await this.toast.create({
-  message: message,
-  duration: 3000,
-  position: position,
-  icon: 'skull-outline'
-});
-toast.present();
-}
-async toastexito(position: 'bottom', message: string) {
-const toast = await this.toast.create({
-  message: message,
-  duration: 3000,
-  position: position,
-  icon: 'skull-outline'
-});
-toast.present();
-}
+    } else {
+      this.toastError('bottom', 'Error! Usuario Ya Existe!');
+      //console.log(this.usuario)
+    }
+  }
+  async toastError(position: 'bottom', message: string) {
+    const toast = await this.toast.create({
+      message: message,
+      duration: 3000,
+      position: position,
+      icon: 'skull-outline'
+    });
+    toast.present();
+  }
+  async toastexito(position: 'bottom', message: string) {
+    const toast = await this.toast.create({
+      message: message,
+      duration: 3000,
+      position: position,
+      icon: 'skull-outline'
+    });
+    toast.present();
+  }
 }
 
 

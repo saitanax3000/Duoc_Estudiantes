@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore} from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 @Injectable({
@@ -7,9 +7,9 @@ import { AngularFirestore} from '@angular/fire/compat/firestore';
 })
 export class RegistroService {
 
-  constructor(private fire: AngularFirestore, ) { }
+  constructor(private fire: AngularFirestore,) { }
 
-  agregarUsuario(coleccion, value){
+  agregarUsuario(coleccion, value) {
     try {
 
       return this.fire.collection(coleccion).add(value);
@@ -20,7 +20,7 @@ export class RegistroService {
 
   }
 
-  buscarUsuario(coleccion, id){
+  buscarUsuario(coleccion, id) {
     try {
       return this.fire.collection(coleccion).doc(id).get();
     } catch (error) {
@@ -29,7 +29,7 @@ export class RegistroService {
 
   }
 
-  buscarTodo(coleccion){
+  buscarTodo(coleccion) {
     try {
       return this.fire.collection(coleccion).snapshotChanges();
     } catch (error) {
@@ -38,7 +38,7 @@ export class RegistroService {
 
   }
 
-  modificarUsuario(coleccion, id, value){
+  modificarUsuario(coleccion, id, value) {
     try {
       this.fire.collection(coleccion).doc(id).set(value);
     } catch (error) {
@@ -47,7 +47,7 @@ export class RegistroService {
 
   }
 
-  eliminarUsuario(coleccion, id){
+  eliminarUsuario(coleccion, id) {
     try {
       this.fire.collection(coleccion).doc(id).delete();
     } catch (error) {

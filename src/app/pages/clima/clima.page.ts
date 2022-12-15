@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClimaService } from '../../services/clima.service';
-import {HttpClient} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
 
 const API_URL = environment.API_URL;
@@ -22,12 +22,12 @@ export class ClimaPage implements OnInit {
   temp: number;
   statusDescription: string;
   weatherLoaded: boolean;
-  weatherTemp:any
+  weatherTemp: any
   todayDate = new Date()
   cityName: any
   weatherIcon: any
-  weatherDetails:any
-  constructor(private weatherService: ClimaService, public httpClient:HttpClient ) {
+  weatherDetails: any
+  constructor(private weatherService: ClimaService, public httpClient: HttpClient) {
     navigator.geolocation.getCurrentPosition(
       (geo) => this.geoLocationSuccess(geo),
       (err) => this.geoLocationError(err)
@@ -55,9 +55,9 @@ export class ClimaPage implements OnInit {
   geoLocationError(r) {
     this.hasPermission = false;
   }
-  
-  loadData(){
-    this.httpClient.get(`${API_URL}/weather?q=${this.city}&appid=${API_KEY}`).subscribe(results=>{
+
+  loadData() {
+    this.httpClient.get(`${API_URL}/weather?q=${this.city}&appid=${API_KEY}`).subscribe(results => {
       //console.log(results);
       this.weatherTemp = results['main']
       this.cityName = results['name']
@@ -67,5 +67,5 @@ export class ClimaPage implements OnInit {
       this.weatherIcon = `http://openweathermap.org/img/wn/${this.weatherDetails.icon}@4x.png`
     })
   }
-  ngOnInit() {}
+  ngOnInit() { }
 }

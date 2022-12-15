@@ -1,9 +1,9 @@
 <ion-header>
-  
+
 </ion-header>
 
 <ion-content>
-  
+
   <div class="fondo">
     <form [formGroup]="usuario" (ngSubmit)="registrar()">
       <ion-card>
@@ -44,17 +44,17 @@
 
         <ion-item>
           <ion-label position="stacked">Repetir Clave</ion-label>
-          <ion-input [(ngModel)]="repetir_clave" [ngModelOptions]="{standalone: true}" id="repetir_clave" type="password"
-            placeholder="Ingrese clave nuevamente"></ion-input>
+          <ion-input [(ngModel)]="repetir_clave" [ngModelOptions]="{standalone: true}" id="repetir_clave"
+            type="password" placeholder="Ingrese clave nuevamente"></ion-input>
         </ion-item>
 
-<!--         <ion-item>
+        <!--         <ion-item>
           <ion-checkbox slot="start">
             <ion-label>Acepta terminos y condiciones.</ion-label>
           </ion-checkbox>
         </ion-item> -->
 
-        <ion-button expand="full" type="submit" >REGISTRAR</ion-button>
+        <ion-button expand="full" type="submit">REGISTRAR</ion-button>
       </ion-card>
     </form>
   </div>

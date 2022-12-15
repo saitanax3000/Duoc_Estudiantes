@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{ pageTitle | titlecase }}</ion-title>
   </ion-toolbar>
@@ -14,13 +14,13 @@
     </ion-text>
 
     <ion-item>
-    <ion-label>Ingrese Monto :</ion-label>
-    <ion-input type="number" placeholder="0" [(ngModel)]="monedaEuro.euro"></ion-input>
+      <ion-label>Ingrese Monto :</ion-label>
+      <ion-input type="number" placeholder="0" [(ngModel)]="monedaEuro.euro"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-button shape="round" (click)="clickConvertEuro()">Convertir
-      <ion-icon slot="end" name="logo-euro"></ion-icon>
+        <ion-icon slot="end" name="logo-euro"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-card>
@@ -31,13 +31,13 @@
     </ion-text>
 
     <ion-item>
-    <ion-label>Ingrese Monto :</ion-label>
-    <ion-input type="number" placeholder="0" [(ngModel)]="monedaDolar.dolar"></ion-input>
+      <ion-label>Ingrese Monto :</ion-label>
+      <ion-input type="number" placeholder="0" [(ngModel)]="monedaDolar.dolar"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-button shape="round" (click)="clickConvertDolar()">Convertir
-      <ion-icon slot="end" name="logo-usd"></ion-icon>
+        <ion-icon slot="end" name="logo-usd"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-card>

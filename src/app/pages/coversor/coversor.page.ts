@@ -65,5 +65,5 @@ export class CoversorPage implements OnInit {
     console.log('peso');
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

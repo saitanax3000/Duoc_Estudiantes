@@ -18,7 +18,7 @@ export class UsuarioService {
       correo: 'administrador@duocuc.cl',
       clave: 'administrador',
       tipo_usuario: 'administrador'
-    },{
+    }, {
       rut: '18.999.000-1',
       nombre: 'brandon',
       ap_paterno: 'sanderson',
@@ -26,7 +26,7 @@ export class UsuarioService {
       correo: 'alumno1@duocuc.cl',
       clave: 'alumno',
       tipo_usuario: 'alumno'
-    },{
+    }, {
       rut: '18.999.000-2',
       nombre: 'stephen',
       ap_paterno: 'king',
@@ -43,7 +43,7 @@ export class UsuarioService {
       correo: 'profesor1@duocuc.cl',
       clave: 'profesor',
       tipo_usuario: 'profesor'
-    },{
+    }, {
       rut: '13.158.524-1',
       nombre: 'julio',
       ap_paterno: 'profe',
@@ -102,17 +102,17 @@ export class UsuarioService {
     }
     //return this.usuarios.find(usu => usu.correo == correo && usu.clave == clave);
   }
-  getAuth(){
+  getAuth() {
     return this.isAuthenticated.value;
   }
-  logout(){
+  logout() {
     this.isAuthenticated.next(false);
     this.router.navigate(['/login']);
   }
 
 
 
-  validarCorreo(correo){
+  validarCorreo(correo) {
     return this.usuarios.find(usu => usu.correo == correo);
   }
 }

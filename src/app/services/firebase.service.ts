@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore} from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { alertController } from '@ionic/core';
 import { BehaviorSubject, using } from 'rxjs';
 import firebase from 'firebase/compat/app';
-  
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class FirebaseService {
 
   constructor(private fire: AngularFirestore, private router: Router) { }
 
-  agregar(coleccion, value){
+  agregar(coleccion, value) {
     try {
       return this.fire.collection(coleccion).add(value);
     } catch (error) {
@@ -25,8 +25,8 @@ export class FirebaseService {
     }
   }
 
-   //Registro
-  getUsuarios(coleccion){
+  //Registro
+  getUsuarios(coleccion) {
     try {
       return this.fire.collection(coleccion).snapshotChanges();
     } catch (error) {
@@ -34,7 +34,7 @@ export class FirebaseService {
     }
   }
 
-  getUsuario(coleccion, id){
+  getUsuario(coleccion, id) {
     try {
       return this.fire.collection(coleccion).doc(id).get();
     } catch (error) {
@@ -42,51 +42,51 @@ export class FirebaseService {
     }
   }
 
-//LOGIN
-loginUsuario(){
-  this.isAuthenticated.next(true);
-}
-
-getDatos(coleccion){
-  try {
-    return this.fire.collection(coleccion).snapshotChanges();
-  } catch (error) {
-    console.log(error);
+  //LOGIN
+  loginUsuario() {
+    this.isAuthenticated.next(true);
   }
-}
 
-getAuth(){
-  return this.isAuthenticated.value;
-}
-logout(){
-  this.isAuthenticated.next(false);
-  this.router.navigate(['/login']);
-}
-
-//ASIGNATURA
-  agregarAsignatura(coleccion, sigla){
+  getDatos(coleccion) {
     try {
-if (this.getAsignatura(coleccion, sigla) == undefined) {
-    this.fire.collection(coleccion).add(sigla);
-      return true;
-}
+      return this.fire.collection(coleccion).snapshotChanges();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  getAuth() {
+    return this.isAuthenticated.value;
+  }
+  logout() {
+    this.isAuthenticated.next(false);
+    this.router.navigate(['/login']);
+  }
+
+  //ASIGNATURA
+  agregarAsignatura(coleccion, sigla) {
+    try {
+      if (this.getAsignatura(coleccion, sigla) == undefined) {
+        this.fire.collection(coleccion).add(sigla);
+        return true;
       }
+    }
     catch (error) {
       console.log(error)
     }
   }
 
-  getAsignatura(coleccion, sigla){
+  getAsignatura(coleccion, sigla) {
     return this.fire.collection(coleccion).doc(sigla).get();
   }
-//CLASE
-agregaClase(coleccion, id, value){
+  //CLASE
+  agregaClase(coleccion, id, value) {
 
-  this.fire.collection(coleccion).doc(id).set(value);
+    this.fire.collection(coleccion).doc(id).set(value);
 
-}
-//CRUD ADMINISTRADOR
-  eliminar(coleccion, id){
+  }
+  //CRUD ADMINISTRADOR
+  eliminar(coleccion, id) {
     try {
       this.fire.collection(coleccion).doc(id).delete();
     } catch (error) {
@@ -94,32 +94,32 @@ agregaClase(coleccion, id, value){
     }
   }
 
-   getDato(coleccion, id){
+  getDato(coleccion, id) {
     try {
       return this.fire.collection(coleccion).doc(id).get();
     } catch (error) {
       console.log(error);
     }
-  } 
-   getrut(coleccion, rut){
+  }
+  getrut(coleccion, rut) {
     try {
       return this.fire.collection(coleccion).doc(rut).get();
     } catch (error) {
       console.log(error);
     }
-  } 
+  }
 
-  modificar(coleccion, id, value){
+  modificar(coleccion, id, value) {
     try {
       this.fire.collection(coleccion).doc(id).set(value);
     } catch (error) {
       console.error(error);
     }
   }
-  modificarclase(id, value){
+  modificarclase(id, value) {
     try {
       this.fire.collection('clases').doc(id).update({
-       alumno: firebase.firestore.FieldValue.arrayUnion(value)
+        alumno: firebase.firestore.FieldValue.arrayUnion(value)
       }
 
       )

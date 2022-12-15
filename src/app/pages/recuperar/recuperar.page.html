@@ -1,7 +1,7 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>{{ pageTitle | titlecase }}</ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>{{ pageTitle | titlecase }}</ion-title>
+  </ion-toolbar>
 </ion-header>
 <ion-content class="content">
   <div class="fondo">
@@ -12,7 +12,8 @@
       </ion-item>
       <!--El comando .include('cadena'): busca que un texto contenga la cadena de texto indicada...
         El disabled deshabilita el boton cuando el correo no incluye la cadena de texto: @duocuc.cl -->
-      <ion-button expand="block" (click)="recuperar()" [disabled]="!correo.includes('@duocuc.cl')" (click)="showLoading()">Recuperar</ion-button>
+      <ion-button expand="block" (click)="recuperar()" [disabled]="!correo.includes('@duocuc.cl')"
+        (click)="showLoading()">Recuperar</ion-button>
     </ion-card>
 
   </div>

@@ -8,7 +8,7 @@ import { AsistenciaService } from 'src/app/services/asistencia.service';
   styleUrls: ['./asistencia.page.scss'],
 })
 export class AsistenciaPage implements OnInit {
-  pageTitle='Asistencia'
+  pageTitle = 'Asistencia'
   KEY_ASISTENCIA = 'asistencia';
   asistencia = {
     cod_asistencia: '',
@@ -16,7 +16,7 @@ export class AsistenciaPage implements OnInit {
     fecha_hora: '',
     alumno: [],
   };
-  
+
   constructor(private activatedRoute: ActivatedRoute, private asistenciaService: AsistenciaService) { }
   ngOnInit() {
   }

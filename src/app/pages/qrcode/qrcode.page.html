@@ -7,13 +7,13 @@
 <ion-content>
 
   <ion-item>
-    <ngx-qrcode [elementType]= 'elementType' value="value"></ngx-qrcode>
+    <ngx-qrcode [elementType]='elementType' value="value"></ngx-qrcode>
   </ion-item>
 
   <ion-item>
     <ion-input placeholder="ingrese texto" [(ngModel)]="value" disabled="true"></ion-input>
   </ion-item>
-  
+
   <ion-item>
     <ion-button (click)="generarQR()" (click)="presentAlert()">COMENZAR CLASE</ion-button>
   </ion-item>

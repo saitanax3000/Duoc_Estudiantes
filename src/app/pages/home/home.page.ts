@@ -1,45 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { ValidacionesService } from 'src/app/services/validaciones.service'; 
-import { FirebaseService} from '../../services/firebase.service';
-
-
+import { ValidacionesService } from 'src/app/services/validaciones.service';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit{
-  pageTitle='Bienvenido'
+export class HomePage implements OnInit {
+  pageTitle = 'Bienvenido'
   //VAMOS A CREAR UNA VARIABLE QUE RECIBA LOS DATOS DEL USUARIO DESDE LOGIN:
   usuario: any;
 
-  constructor(private router: Router, private FirebaseService:FirebaseService) {}
+  constructor(private router: Router, private FirebaseService: FirebaseService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
   }
 
-
-  logout(){
+  logout() {
     this.FirebaseService.logout();
   }
 
-  verClima(){
+  verClima() {
     this.router.navigateByUrl('/clima');
   }
 
-  verConversor(){
+  verConversor() {
     this.router.navigateByUrl('/coversor');
   }
 
-  verDesarrolladores(){
+  verDesarrolladores() {
     this.router.navigateByUrl('/about');
   }
 
-  
-  
 }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController} from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { NgxQrcodeElementTypes } from '@techiediaries/ngx-qrcode';
 import { v4 } from 'uuid';
 
@@ -9,12 +9,12 @@ import { v4 } from 'uuid';
   styleUrls: ['./qrcode.page.scss'],
 })
 export class QrcodePage implements OnInit {
-  pageTitle='Generador'
+  pageTitle = 'Generador'
   //VARIABLES PARA CREAR NUESTRO CÓDIGO QR:
   elementType: NgxQrcodeElementTypes = NgxQrcodeElementTypes.CANVAS;
   value = '';
   constructor(private alerta: AlertController) { }
-  async presentAlert(){
+  async presentAlert() {
     const alerta = await this.alerta.create({
       header: 'Alerta',
       subHeader: 'Ha elegido esta opción',
@@ -27,7 +27,7 @@ export class QrcodePage implements OnInit {
   ngOnInit() {
   }
 
-  generarQR(){
+  generarQR() {
     if (this.value == '') {
       this.value = v4();
     }

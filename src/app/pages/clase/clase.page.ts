@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clase.page.scss'],
 })
 export class ClasePage implements OnInit {
-  pageTitle='Clase';
+  pageTitle = 'Clase';
   clase = {
     codClase: '',
     idAsignatura: '',
     fehaHora: '',
     alumnos: ''
   };
-  constructor(private storageClase: Storage) { 
+  constructor(private storageClase: Storage) {
     storageClase.create();
   }
 
